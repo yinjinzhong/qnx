@@ -1,0 +1,7 @@
+config.*
+stamp-h
+a.out
+Makefile
+*.out
+ksh
+ksh.*

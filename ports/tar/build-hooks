@@ -1,0 +1,27 @@
+function hook_preconfigure {
+	configure_opts="${configure_opts} --disable-nls --prefix=$INSTALL_ROOT_nto/${cpudir}"
+}
+
+function hook_postconfigure {
+	case $TARGET_SYSNAME in
+	qnx4)	
+		make config.h
+		sed \
+			-e"s;/\* #undef HAVE_SIGSETJMP \*/;#define HAVE_SIGSETJMP 1;" \
+			-e"s;/\* #undef HAVE_KILLPG \*/;#define HAVE_KILLPG 1;" \
+			-e"s;#define HAVE_SYS_SIGLIST 1;/\* #undef HAVE_SYS_SIGLIST \*/;" \
+			<config.h >config.h~
+		touch -rconfig.h config.h~
+		mv config.h~ config.h
+	;;
+	esac
+}
+
+function hook_premake {
+	make_opts="${make_opts} LIBS="
+}
+
+function hook_pinfo {
+    cd src
+    gen_pinfo -e tar usr/bin USE="%1>%C --help" "DESCRIPTION=Tape Archiver"
+}

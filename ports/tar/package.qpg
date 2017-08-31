@@ -1,0 +1,9 @@
+<QPG:Generation>
+   <QPG:Owner file="owner.qpg"/>
+   <QPG:Values>
+      <QPG:Files>
+         <QPG:Add type="file" file="nto-*/src/tar" pinfo="$"/>
+         <QPG:Add file="doc/tar.info*" install="/usr/info/"/>
+      </QPG:Files>
+   </QPG:Values>
+</QPG:Generation>

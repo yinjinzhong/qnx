@@ -1,0 +1,16 @@
+function hook_preconfigure {
+	configure_opts="${configure_opts} --prefix=$INSTALL_ROOT_nto/${cpudir}"
+	if [ "${SYSNAME}" == "linux" ] ; then 
+		configure_opts="${configure_opts} --without-krb4"
+		configure_opts="${configure_opts} --without-gssapi"
+	fi
+}
+
+function hook_premake {
+	strip_r_switch
+}
+
+function hook_pinfo {
+    cd src
+	gen_pinfo -e cvs usr/bin USE="%2>%C --help" "DESCRIPTION=The Concurrent Versions System" 
+}

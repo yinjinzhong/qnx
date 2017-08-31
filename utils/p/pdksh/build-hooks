@@ -1,0 +1,29 @@
+function hook_preconfigure {
+	configure_opts="${configure_opts} --disable-vi --enable-history=simple --prefix=$INSTALL_ROOT_nto/${cpudir}"
+}
+
+function hook_premake {
+	if [ ${SYSNAME} = nto ]; then
+	    make_CC="${make_CC} -D_XOPEN_SOURCE=500 -D_FILE_OFFSET_BITS=64"
+	fi
+	strip_r_switch
+}
+
+function hook_postmake {
+	# On the ARM, mark the executable as needing 512K of stack since
+	# the default is smaller than normal due to cramped virtual space
+	if [ "${cpudir}" = "armle" -o "${cpudir}" = "armbe" ]; then
+		ldrel -L -S 512K ksh
+	fi
+}
+
+function hook_pinfo {
+	if [ ${SYSNAME} = nto ]; then
+		loc="bin SYMLINK=sh";
+	elif [ ${SYSNAME} = win32 ]; then
+		loc="usr/bin SYMLINK=sh.exe";
+	else
+		loc="usr/bin";
+	fi
+	gen_pinfo -e ksh ${loc} USE=../ksh.use DESCRIPTION="Public Domain Korn Shell" 
+}

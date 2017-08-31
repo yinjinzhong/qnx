@@ -1,0 +1,7 @@
+config.*
+Makefile
+doc
+test
+awklib
+gawk
+stamp-h

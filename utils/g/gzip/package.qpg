@@ -1,0 +1,15 @@
+<QPG:Generation>
+   <QPG:Owner file="owner.qpg"/>
+   <QPG:Values>
+      <QPG:Files>
+		 <QPG:Add hos="nto" type="file" file="nto-arm-be/gzip" install="/bin" target="armbe" pinfo="gzip.pinfo"/>
+		 <QPG:Add hos="nto" type="file" file="nto-arm-le/gzip" install="/bin" target="armle" pinfo="gzip.pinfo"/>
+		 <QPG:Add hos="nto" type="file" file="nto-mips-be/gzip" install="/bin" target="mipsbe" pinfo="gzip.pinfo"/>
+		 <QPG:Add hos="nto" type="file" file="nto-mips-le/gzip" install="/bin" target="mipsle" pinfo="gzip.pinfo"/>
+		 <QPG:Add hos="nto" type="file" file="nto-ppc-be/gzip" install="/bin" target="ppcbe" pinfo="gzip.pinfo"/>
+		 <QPG:Add hos="nto" type="file" file="nto-sh-le/gzip" install="/bin" target="shle" pinfo="gzip.pinfo"/>
+		 <QPG:Add hos="nto" type="file" file="nto-x86-o/gzip" install="/bin" target="x86" pinfo="gzip.pinfo"/>
+         <QPG:Add hos="win32" type="file" file="win32-x86-o/gzip.exe" install="/usr/bin" pinfo="gzip.pinfo"/>
+      </QPG:Files>
+   </QPG:Values>
+</QPG:Generation>

@@ -1,0 +1,21 @@
+function hook_preconfigure {
+	configure_opts="${configure_opts} --disable-vi --enable-history=simple --prefix=$INSTALL_ROOT_nto/${cpudir}"
+}
+
+function hook_premake {
+	if [ ${SYSNAME} = nto ]; then
+	    make_CC="${make_CC} -D_XOPEN_SOURCE=500 -D_FILE_OFFSET_BITS=64"
+	fi
+	strip_r_switch
+}
+
+function hook_pinfo {
+   case ${SYSNAME} in
+     win32)
+	   gen_pinfo -e gzip usr/bin USE="%1>%C --help" DESCRIPTION="GNU zip compression utility" SYMLINK=gunzip.exe SYMLINK=zcat.exe SYMLINK=uncompress.exe LICE=GPL 
+	   ;;
+     *) 
+	   gen_pinfo -e gzip bin USE="%1>%C --help" DESCRIPTION="GNU zip compression utility" SYMLINK=gunzip SYMLINK=zcat SYMLINK=uncompress LICE=GPL
+	   ;;
+   esac
+}

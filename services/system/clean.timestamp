@@ -1,0 +1,5 @@
+Modifying this file will cause all of procnto to do a clean recompile.
+You should put a comment in here as to the reason.
+
+Checkin for Memory Partitioning support (PR43579)
+

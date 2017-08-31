@@ -1,0 +1,14 @@
+function hook_preconfigure {
+	configure_opts="${configure_opts} --prefix=$INSTALL_ROOT_nto/${cpudir}"
+}
+
+function hook_premake {
+	strip_r_switch
+}
+
+function hook_pinfo {
+	# Executables
+	cd src/
+	gen_pinfo -e diff  usr/bin USE="%2>%C --help" LIC=GPL "DESCRIPTION=GNU Diffutils"
+	gen_pinfo -e diff3 usr/bin USE="%2>%C --help" LIC=GPL "DESCRIPTION=GNU Diffutils"
+}

@@ -1,0 +1,21 @@
+function hook_preconfigure {
+	configure_opts="$configure_opts --prefix=$INSTALL_ROOT_nto/${cpudir}"
+}
+
+function hook_premake {
+      # Work around mips optimization bug.
+      targ=${PWD#*-}
+      case $targ in
+      mips*)
+              sed 's/-O2/-O0/g' < Makefile > sed.makefile.sed
+              mv sed.makefile.sed Makefile
+              ;;
+      esac
+}
+
+function hook_pinfo {
+    gen_pinfo -e gawk usr/bin USE="%1>%C --help" DESCRIPTION="AWK programming language" SYMLINK=awk
+    cd awklib
+    gen_pinfo -e pwcat usr/libexec DESCRIPTION="pwcat"
+    gen_pinfo -e grcat usr/libexec DESCRIPTION="grcat"
+}

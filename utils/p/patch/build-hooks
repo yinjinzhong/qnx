@@ -1,0 +1,11 @@
+function hook_preconfigure {
+	configure_opts="$configure_opts --prefix=$INSTALL_ROOT_nto/${cpudir}"
+}
+
+function hook_premake {
+	    strip_r_switch
+}
+
+function hook_pinfo {
+    gen_pinfo -e patch usr/bin USE="%1>%C --help" DESCRIPTION="Apply a source patch"
+}

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<module name="gzip">
+
+	<type>Element</type>
+
+	<classification>Runtime</classification>
+
+	<supports>
+		<availability ref="toolshosts"/>
+		<availability ref="ostargets"/>
+	</supports>
+
+	<source available="false">
+		<location type="">.</location>
+	</source>
+
+
+<GroupOwner>tools</GroupOwner>
+	<contents>
+		<package isHost="true">
+				<component id="gzip" generated="true">
+						<location basedir="nto-arm-be" os="nto" runtime="true">gzip</location>
+						<location basedir="nto-arm-le" os="nto" runtime="true">gzip</location>
+						<location basedir="nto-mips-be" os="nto" runtime="true">gzip</location>
+						<location basedir="nto-mips-le" os="nto" runtime="true">gzip</location>
+						<location basedir="nto-ppc-be" os="nto" runtime="true">gzip</location>
+						<location basedir="nto-sh-le" os="nto" runtime="true">gzip</location>
+						<location basedir="nto-x86-o" os="nto" runtime="true">gzip</location>
+						<location basedir="win32-x86-o" os="win32" isa="x86" runtime="true">gzip</location>
+				</component>
+		</package>
+
+	</contents>
+
+</module>

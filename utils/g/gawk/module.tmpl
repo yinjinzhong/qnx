@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<module name="gawk">
+
+	<type>Element</type>
+
+	<classification>Runtime</classification>
+
+	<supports>
+		<availability ref="ostargets"/>
+	</supports>
+
+	<source available="false">
+		<location type="">.</location>
+	</source>
+
+
+<GroupOwner>tools</GroupOwner>
+	<contents>
+		<component id="gawk" generated="true">
+			<location basedir="{os}-{cpu}-{o|endian}" runtime="true">
+				gawk
+			</location>
+		</component>
+		<component id="igawk" generated="false">
+				<location type="install">/usr/libexec</location>
+				<location basedir="{os}-{cpu}-{o|endian}/awklib" runtime="true">igawk</location>
+		</component>
+
+		<component id="awklib" generated="true">
+				<location basedir="{os}-{cpu}-{o|endian}/awklib" runtime="true">igawk</location>
+				<location basedir="{os}-{cpu}-{o|endian}/awklib" runtime="true">pwcat</location>
+				<location basedir="{os}-{cpu}-{o|endian}/awklib" runtime="true">grcat</location>
+		</component>
+
+		<component id="awk" generated="false">
+				<location type="install">/usr/share/awk</location>
+				<location basedir="awklib/eg/lib" runtime="false">*.awk</location>
+		</component>
+		
+		<component id="awkinfo" generated="false">
+				<location type="install">/usr/share/info</location>
+				<location basedir="doc" runtime="false">*.info</location>
+		</component>
+
+		<component id="awkman" generated="false">
+				<location type="install">/usr/man/man1</location>
+				<location basedir="doc" runtime="false">*.1</location>
+		</component>
+
+	</contents>
+
+	<requires>
+<!--		<part build="false" location="lib/m"/> -->
+	</requires>
+
+</module>

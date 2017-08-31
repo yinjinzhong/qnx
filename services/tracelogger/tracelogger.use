@@ -1,0 +1,42 @@
+%C - logs events into an event file
+
+%C	[-crw] [-n num] [-k num] [-b num] [-F [0-7]] [-s seconds] [-f file] [-d1] [-P] [-R] [-M -S max_filesize]
+    [-A key=value]
+
+%C	- logs events into an event file - default
+	event file is /dev/shmem/tracebuffer.kev.
+
+Options:
+	-n <num> number of iterations to be logged in iterations mode
+		( default is 32, 0 for unlimited )
+	-k <num> number of buffers allocated in the kernel
+		( default is 32 of ~16k each )
+	-b <num> maximum number of dynamic buffers allocated in tracelogger
+		( default is 64 of ~11k each )
+	-c continuous mode
+		( default is iterations mode )
+	-w	wide events 
+		( default is fast events )
+	-s <seconds> number of seconds to log in timed base mode
+		( 0 for unlimited duration (default) )
+	-f <file> name of the file to store logged events
+		( default is /dev/shmem/tracebuffer.kev )
+	-S <size[kM]> maximum size of output file
+	-M  use direct mapping mode (-S option is required)
+	-d1 Launch in daemon mode
+    -E  Enable events, even when in daemon mode
+	-r  Launch in ring mode
+		( default linear mode )
+	-A <key=value> Add an additional attribute setting whose key is <key>
+       and whose value is the string <value>.  Multiple -A's can be specified
+	-P  Preserve the kernel buffer memory in a shared object after the run
+	-R  Reuse the kernel buffer memory (-P must have been previously used)
+	-F <num> Filtering
+		( 0 - Do not set any filtering )
+		( 1 - disable Kernel calls Class )
+		( 2 - disable Interrupt Class )
+		( 3 - disable Process Class )
+		( 4 - disable Thread Class )
+		( 5 - disable VThread Class )
+		( 6 - disable Communication Class )
+		( 7 - disable System Class )

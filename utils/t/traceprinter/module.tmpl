@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!-- note that this only includes the traceprinter utility, -->
+<!-- and not the regress directory. -->
+<module name="traceprinter">
+
+	<type>Element</type>
+
+	<classification>Runtime</classification>
+
+	<supports>
+		<availability ref="toolshosts"/>
+		<availability ref="ostargets"/>
+	</supports>
+
+	<source available="false">
+		<location type="">.</location>
+	</source>
+
+	<GroupOwner>os</GroupOwner>
+
+	<contents>
+		<package isHost="true">
+			<component id="traceprinter" generated="true">
+				<location basedir="{os}/{cpu}/o{.:endian}" runtime="true">traceprinter</location>
+			</component>
+		</package>
+
+	</contents>
+
+	<requires>
+		<part build="true" location="lib/compat"/>
+		<part build="true" location="lib/traceparser"/>
+	</requires>
+
+</module>

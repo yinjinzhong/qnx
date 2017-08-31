@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<module name="ucl">
+
+	<type>Element</type>
+
+	<classification>SDK</classification>
+
+	<supports>
+		<availability ref="ostargets"/>
+		<availability ref="toolshosts"/>
+	</supports>
+
+	<source available="false">
+		<location type="">.</location>
+	</source>
+
+
+	<GroupOwner>os</GroupOwner>
+
+	<contents>
+		<package isHost="true">
+			<component id="Archive" generated="true">
+				<kind type="library"/>
+				<location basedir="{os}/{cpu}/a{.:endian}" runtime="false">
+					libucl.a
+				</location>
+			</component>
+
+			<component id="SharedArchive" generated="true">
+				<kind type="library"/>
+				<location basedir="nto/{cpu}/a{.:endian}.shared" os="nto" runtime="false">
+					libuclS.a
+				</location>
+			</component>
+
+			<component id="header" generated="false">
+				<kind type="header"/>
+				<source available="true">
+					<location basedir="public" runtime="false" subdirs="true">
+						.
+					</location>
+				</source>
+			</component>
+		</package>
+	</contents>
+
+</module>

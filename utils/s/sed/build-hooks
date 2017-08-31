@@ -1,0 +1,17 @@
+function hook_preconfigure {
+	configure_opts="$configure_opts --prefix=$INSTALL_ROOT_nto/${cpudir}"
+	if [ "$SYSNAME" == "win32" ] ; then
+		export CC='gcc -mno-cygwin'
+	fi
+}
+
+function hook_premake {
+	if [ "$SYSNAME" == "win32" ] ; then
+		make_opts="CFLAGS+=-mno-cygwin"
+	fi
+}
+
+function hook_pinfo {
+    cd sed
+    gen_pinfo -e sed usr/bin DESCRIPTION="Stream Editor" "USE=%1>%C --help"
+}
